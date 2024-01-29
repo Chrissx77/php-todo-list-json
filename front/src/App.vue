@@ -1,18 +1,18 @@
 <script>
-import axios from "axios";
-
+import Tasks from './components/Tasks.vue';
 export default{
-  mounted(){
-    axios.get("http://localhost/php-todo-list-json/back/")
-    .then(res =>{
-      console.log("razze", res.data);
-    });
-  }
+
+components:{
+  Tasks,
+
+}
+
 }
 </script>
 
 <template>
-  <h1>Le razze di Cani :D</h1>
+  <tasks/>
+ 
 </template>
 
 <style scoped></style>
