@@ -53,7 +53,29 @@ export default {
         .then((res) => {
           this.tasks = res.data;
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
+    },
+    deleteTask(i) {
+      const params = {
+        index: i,
+      };
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      axios
+        .post(
+          "http://localhost/php-todo-list-json/back/deleteTask.php",
+          params,
+          config
+        )
+        .then((res) => {
+          this.tasks = res.data;
+        })
+        .catch((err) => console.log(err));
     },
   },
   mounted() {
@@ -82,6 +104,7 @@ export default {
       :class="task.stato ? 'done' : ''"
     >
       {{ task.testo }}
+      <button @click="deleteTask(index)">X</button>
     </li>
   </ul>
 </template>
